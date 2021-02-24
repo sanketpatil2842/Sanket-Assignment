@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
     }
 
     fun init() {
-        mainAdapters = MainAdapters(this,this)
+        mainAdapters = MainAdapters(this, this)
         recyl = findViewById(R.id.recyl)
         swiperefresh = findViewById(R.id.swiperefresh)
         swiperefresh.setOnRefreshListener {
@@ -55,14 +55,17 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
 
     fun observeViewModel() {
         mainViewModel.getUserList().observe(this, {
-            when (it) {
-                is NetworkResult.Success -> {
-                    mainAdapters.setData(it.data)
-                }
-                is NetworkResult.Error -> {
-                    MyUtils.showErrorLog(it.exception)
+            it?.let {
+                when (it) {
+                    is NetworkResult.Success -> {
+                        mainAdapters.setData(it.data)
+                    }
+                    is NetworkResult.Error -> {
+                        MyUtils.showToastMsg(this,it.exception)
+                    }
                 }
             }
+
         })
     }
 
