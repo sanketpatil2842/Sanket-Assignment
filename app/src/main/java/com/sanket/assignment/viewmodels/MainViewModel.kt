@@ -16,4 +16,9 @@ class MainViewModel : ViewModel() {
     fun getUserList(): MutableLiveData<NetworkResult<List<UserResponse>>> {
         return mainRepository.getUsers()
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        mainRepository.clear()
+    }
 }

@@ -71,4 +71,12 @@ dependencies {
     //glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    //for testing retrofit.
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.7.2")
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:3.3.3"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
+    testImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
 }
